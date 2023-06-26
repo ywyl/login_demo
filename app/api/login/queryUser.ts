@@ -1,6 +1,7 @@
-import { query } from '../../../lib/db';
+import { query } from '@/lib/db';
 
 interface UserInfo {
+  id: string | number;
   username: string;
   password: string;
 }
@@ -11,6 +12,7 @@ export async function queryUser(username: string): Promise<UserInfo> {
   const results = await query({ querySql, values });
 
   return {
+    id: results[0].id,
     username: results[0].username,
     password: results[0].password,
   };
