@@ -6,7 +6,7 @@ interface UserInfo {
   password: string;
 }
 
-export async function queryUser(username: string): Promise<UserInfo> {
+export async function queryUser(username: string | undefined): Promise<UserInfo> {
   const querySql = 'Select * from user where username = ?';
   const values = [username];
   const results = await query({ querySql, values });
